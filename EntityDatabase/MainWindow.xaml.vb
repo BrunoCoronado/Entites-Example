@@ -16,9 +16,8 @@ Class MainWindow
         Me.CoursesList.MainGrid.DataContext = New CoursesViewModel
         Me.PeopleList.MainGrid.DataContext = New PersonViewModel
         Me.OfficeAssigmentList.MainGrid.DataContext = New OfficeAssignmentsViewModel
-        Me.OnlineCoursesList.MainGrid.DataContext = New OnlineCourse
+        Me.OnlineCoursesList.MainGrid.DataContext = New OnlineCourseViewModel
         Me.OnsiteCoursesList.MainGrid.DataContext = New OnsiteCousesViewModel
         Me.StudentGradesList.MainGrid.DataContext = New StudentGradesViewModel
-
     End Sub
 End Class

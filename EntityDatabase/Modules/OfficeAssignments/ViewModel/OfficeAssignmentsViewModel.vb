@@ -20,7 +20,6 @@ Namespace Modules.OfficeAssignments.ViewModels
             End Set
         End Property
 
-        ' Function to get all departments from service
         Private Function GetAllOfficeAsignments() As IQueryable(Of OfficeAssignment)
             Return Me.dataAccess.GetAllOfficeAssignment
         End Function
