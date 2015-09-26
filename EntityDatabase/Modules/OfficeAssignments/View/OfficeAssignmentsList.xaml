@@ -10,7 +10,7 @@
                   ItemsSource="{Binding OfficeAssignments}" Height="284" Width="512"
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="InstructorIdColumn" Binding="{Binding Path=InstructorID}" Header="ID" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="InstructorIdColumn" Binding="{Binding Path=Timestamp}" Header="TimeStamp" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="LocationColumn" Binding="{Binding Path=Location}" Header="Location" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>

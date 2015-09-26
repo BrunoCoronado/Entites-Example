@@ -11,8 +11,8 @@
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="PersonIdColumn" Binding="{Binding Path=PersonID}" Header="ID" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="LastNameColumn" Binding="{Binding Path=LastNameColumn}" Header="LastName" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="FirstNameColumn" Binding="{Binding Path=FirstNameColumn}" Header="FirstName" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="LastNameColumn" Binding="{Binding Path=LastName}" Header="LastName" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="FirstNameColumn" Binding="{Binding Path=FirstName}" Header="FirstName" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
