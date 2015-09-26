@@ -10,9 +10,13 @@
                   ItemsSource="{Binding People}" Height="284" Width="512"
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="PersonIdColumn" Binding="{Binding Path=PersonID}" Header="ID" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="LastNameColumn" Binding="{Binding Path=LastName}" Header="LastName" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="FirstNameColumn" Binding="{Binding Path=FirstName}" Header="FirstName" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="PersonIdColumn" Binding="{Binding Path=PersonID}" Header="Person ID" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="LastNameColumn" Binding="{Binding Path=LastName}" Header="Last Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="FirstNameColumn" Binding="{Binding Path=FirstName}" Header="First Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="HireDateColumn" Binding="{Binding Path=HireDate}" Header="Hire Date" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="EnrrollmentDateColumn" Binding="{Binding Path=EnrollmentDate}" Header="Enrrollment Date" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="InstructorIdColumn" Binding="{Binding Path=OfficeAssignment.InstructorID}" Header="InstructorID" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="StudentIdColumn" Binding="{Binding Path=StudentGrades.StudentID}" Header="StudentID" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
