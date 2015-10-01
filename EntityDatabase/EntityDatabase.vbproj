@@ -84,6 +84,7 @@
       <DependentUpon>Application.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BusinessLogic\Helpers\RelayCommand.vb" />
     <Compile Include="BusinessLogic\Helpers\ViewModelBase.vb" />
     <Compile Include="BusinessLogic\Services\Implementations\CourseService.vb" />
     <Compile Include="BusinessLogic\Services\Implementations\DepartmentService.vb" />
@@ -145,6 +146,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Modules\Departments\Views\DepartmentCRUDView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Modules\Departments\Views\DepartmentsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,7 +199,11 @@
     <Compile Include="Modules\Courses\View\CoursesList.xaml.vb">
       <DependentUpon>CoursesList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Departments\ViewModels\DepartmentsCRUDViewModel.vb" />
     <Compile Include="Modules\Departments\ViewModels\DepartmentsViewModel.vb" />
+    <Compile Include="Modules\Departments\Views\DepartmentCRUDView.xaml.vb">
+      <DependentUpon>DepartmentCRUDView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Departments\Views\DepartmentsList.xaml.vb">
       <DependentUpon>DepartmentsList.xaml</DependentUpon>
     </Compile>

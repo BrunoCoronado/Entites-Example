@@ -1,3 +1,6 @@
-﻿Public Class DepartmentCRUDView
+﻿Namespace Modules.Departments.Views
+    Public Class DepartmentCRUDView
 
-End Class
+    End Class
+End Namespace
+

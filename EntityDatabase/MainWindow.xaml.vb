@@ -5,6 +5,7 @@ Imports Modules.OfficeAssignments.ViewModels
 Imports Modules.OnlineCourses.ViewModels
 Imports Modules.OnsiteCoures.ViewModel
 Imports Modules.StudentGrades.ViewModels
+
 Class MainWindow
     Sub New()
 
@@ -12,7 +13,8 @@ Class MainWindow
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        Me.DepartmenstUserControl.MainGrid.DataContext = New DepartmentsViewModel()
+        Me.DepartmenstUserControl.MainGrid.DataContext = New DepartmentsViewModel
+        Me.DepartmenstUserControlCRUD.DepartmentCRUDGrid.DataContext = New DepartmentsCRUDViewModel
         Me.CoursesList.MainGrid.DataContext = New CoursesViewModel
         Me.PeopleList.MainGrid.DataContext = New PersonViewModel
         Me.OfficeAssigmentList.MainGrid.DataContext = New OfficeAssignmentsViewModel
