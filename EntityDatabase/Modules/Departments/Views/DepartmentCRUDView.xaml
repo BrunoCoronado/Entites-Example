@@ -17,10 +17,10 @@
         <Label Content="Administrator" HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
         <Label Content="Departments CRUD" HorizontalAlignment="Left" Margin="240,30,0,0" VerticalAlignment="Top"/>
         <Button  Command="{Binding ButtonCreateDepartment}" Content="CREATE" HorizontalAlignment="Left" Margin="104,192,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="439,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="439,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="439,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="439,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding DepartmentNameA, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="439,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding DepartmentBudegtA, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="439,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding DepartmentStartDateA, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="439,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding DepartmentAdministratorA, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="439,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="294,93,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
         <Label Content="Budget" HorizontalAlignment="Left" Margin="292,118,0,0" VerticalAlignment="Top" Height="28" Width="119"/>
         <Label Content="StartDate" HorizontalAlignment="Left" Margin="292,151,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
@@ -28,7 +28,7 @@
         <Button Content="UPDATE" HorizontalAlignment="Left" Margin="376,221,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="DELETE" HorizontalAlignment="Left" Margin="240,239,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Department" HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top" Height="32" Width="81" RenderTransformOrigin="0.506,-0.045"/>
-        <ComboBox HorizontalAlignment="Left" Margin="98,239,0,0" VerticalAlignment="Top" Width="120" SelectedValue="{Binding DepartmentNameA}" ItemsSource="{Binding Departments}" DisplayMemberPath="Name" SelectedValuePath="DepartmentID"/>
+        <ComboBox HorizontalAlignment="Left" Margin="98,239,0,0" VerticalAlignment="Top" Width="120" SelectedValue="{Binding DepartmentNameC}" ItemsSource="{Binding Departments}" DisplayMemberPath="Name" SelectedValuePath="DepartmentID"/>
         <ComboBox HorizontalAlignment="Left" Margin="439,66,0,0" VerticalAlignment="Top" Width="120" SelectedValue="{Binding DepartmentNameB}" ItemsSource="{Binding Departments}" DisplayMemberPath="Name" SelectedValuePath="DepartmentID"/>
         <Label Content="Department" HorizontalAlignment="Left" Margin="294,63,0,0" VerticalAlignment="Top" Height="25" Width="81" RenderTransformOrigin="0.506,-0.045"/>
     </Grid>

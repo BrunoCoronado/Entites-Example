@@ -13,19 +13,22 @@ Namespace Modules.Departments.ViewModels
         Private _name As String
         Private _budget As String
         Private _Administrator As String
+        Private _nameA As String
+        Private _budgetA As String
+        Private _AdministratorA As String
         Private _startDate As DateTime = DateTime.Now
         Private _buttonCreate As ICommand
         Private _buttonDelete As ICommand
         Private _buttonUpdate As ICommand
         Private _departments As ObservableCollection(Of Department)
 
-        Public Property DepartmentNameA As String
+        Public Property DepartmentNameC As String
             Get
                 Return _departmentNameA
             End Get
             Set(value As String)
                 _departmentNameA = value
-                OnPropertyChanged("DepartmentNameA")
+                OnPropertyChanged("DepartmentNameC")
             End Set
         End Property
 
@@ -69,6 +72,36 @@ Namespace Modules.Departments.ViewModels
             End Set
         End Property
 
+        Public Property DepartmentNameA As String
+            Get
+                Return _nameA
+            End Get
+            Set(value As String)
+                _nameA = value
+                OnPropertyChanged("DepartmentNameA")
+            End Set
+        End Property
+
+        Public Property DepartmentBudgetA As String
+            Get
+                Return _budgetA
+            End Get
+            Set(value As String)
+                _budgetA = value
+                OnPropertyChanged("DepartmentBudgetA")
+            End Set
+        End Property
+
+        Public Property DepartmentAdministratorA As String
+            Get
+                Return _AdministratorA
+            End Get
+            Set(value As String)
+                _AdministratorA = value
+                OnPropertyChanged("DepartmentAdministratorA")
+            End Set
+        End Property
+
         Public Property Departments As ObservableCollection(Of Department)
             Get
                 Return _departments
@@ -107,11 +140,28 @@ Namespace Modules.Departments.ViewModels
         End Property
 
         Private Sub Update()
-            Throw New NotImplementedException
+            If DepartmentName <> Nothing And DepartmentBudget <> Nothing And DepartmentAdministrator <> Nothing Then
+                Dim department As New Department
+                department.Name = DepartmentNameA
+                department.Budget = DepartmentBudgetA
+                department.Administrator = DepartmentAdministratorA
+                department.StartDate = _startDate
+                _dataAcces.EditDepartment(department)
+                DepartmentNameA = Nothing
+                DepartmentBudgetA = Nothing
+                DepartmentAdministratorA = Nothing
+            Else
+                MsgBox("llene todos los campos")
+            End If
         End Sub
 
         Private Sub Delete()
-            Throw New NotImplementedException
+            Dim department As New Department
+            If DepartmentNameA <> Nothing Then
+                department = Me._dataAcces.DeleteDepartment(DepartmentNameA)
+            Else
+                DepartmentNameA = Nothing
+            End If
         End Sub
 
         Private Sub Create()

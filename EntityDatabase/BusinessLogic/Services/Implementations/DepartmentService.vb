@@ -10,29 +10,37 @@ Namespace BusinessLogic.Services.Implementations
 
         Public Sub CreateDepartment(Department As Department) Implements IDepartmentService.CreateDepartment
             If IfNotExist(Department.Name) Then
-                DataContext.DBEntities.Departments.Add(Department)
-                DataContext.DBEntities.SaveChanges()
-                MsgBox("Creacion exitosa.", MsgBoxStyle.Information, "School")
-            Else
-                MsgBox("Departamento existente.", MsgBoxStyle.Critical, "School")
+                Try
+                    DataContext.DBEntities.Departments.Add(Department)
+                    DataContext.DBEntities.SaveChanges()
+                Catch ex As Exception
+                    Console.WriteLine(ex)
+                End Try
             End If
-
         End Sub
 
         Public Sub EditDepartment(Department As Department) Implements IDepartmentService.EditDepartment
-            Dim newData = (From d In DataContext.DBEntities.Departments Where d.Name = Department.Name).FirstOrDefault
-            newData.Name = Department.Name
-            newData.Budget = Department.Budget
-            newData.StartDate = Department.StartDate
-            newData.Administrator = Department.Administrator
-            DataContext.DBEntities.SaveChanges()
+            Try
+                Dim newData = (From d In DataContext.DBEntities.Departments Where d.Name = Department.Name).FirstOrDefault
+                newData.Name = Department.Name
+                newData.Budget = Department.Budget
+                newData.StartDate = Department.StartDate
+                newData.Administrator = Department.Administrator
+                DataContext.DBEntities.SaveChanges()
+            Catch ex As Exception
+                Console.WriteLine(ex)
+            End Try      
         End Sub
 
         Public Function DeleteDepartment(Department As String) As Object Implements IDepartmentService.DeleteDepartment
-            Dim dep = (From d In DataContext.DBEntities.Departments Where d.Name = Department).FirstOrDefault
-            DataContext.DBEntities.Departments.Remove(dep)
-            DataContext.DBEntities.SaveChanges()
-            Return dep
+            Try
+                Dim dep = (From d In DataContext.DBEntities.Departments Where d.Name = Department).FirstOrDefault
+                DataContext.DBEntities.Departments.Remove(dep)
+                DataContext.DBEntities.SaveChanges()
+                Return dep
+            Catch ex As Exception
+                Console.WriteLine(ex)
+            End Try            
         End Function
 
         Private Function IfNotExist(Department As String) As Boolean
@@ -43,8 +51,6 @@ Namespace BusinessLogic.Services.Implementations
                 Return False
             End If
         End Function
-
-       
     End Class
 End Namespace
 
