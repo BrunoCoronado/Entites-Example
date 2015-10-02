@@ -7,7 +7,7 @@
 
         Sub EditOnlineCourse(onlineCourse As OnlineCourse)
 
-        Function DeleteOnlineCourse(onlineCourse As String)
+        Sub DeleteOnlineCourse(onlineCourse As OnlineCourse)
 
     End Interface
 End Namespace

@@ -158,7 +158,8 @@ Namespace Modules.Departments.ViewModels
         Private Sub Delete()
             Dim department As New Department
             If DepartmentNameA <> Nothing Then
-                department = Me._dataAcces.DeleteDepartment(DepartmentNameA)
+                Dim dDepartment As New Department
+                Me._dataAcces.DeleteDepartment(dDepartment)
             Else
                 DepartmentNameA = Nothing
             End If

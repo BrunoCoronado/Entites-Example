@@ -121,7 +121,8 @@ Namespace Modules.OnlineCourses.ViewModels
         Private Sub Delete()
             Dim onlineCourse As New Global.OnlineCourse
             If OnlineCourseC <> Nothing Then
-                onlineCourse = Me._dataAcces.DeleteOnlineCourse(OnlineCourseC)
+                Dim dOnlineCourse As New Global.OnlineCourse
+                Me._dataAcces.DeleteOnlineCourse(dOnlineCourse)
             Else
                 OnlineCourseC = Nothing
             End If

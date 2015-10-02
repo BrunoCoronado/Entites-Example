@@ -7,7 +7,7 @@
 
         Sub EditDepartment(Department As Department)
 
-        Function DeleteDepartment(Department As String)
+        Sub DeleteDepartment(Department As Department)
 
     End Interface
 End Namespace

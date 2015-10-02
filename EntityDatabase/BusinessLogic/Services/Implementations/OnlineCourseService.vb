@@ -4,32 +4,18 @@ Namespace BusinessLogic.Services.Implementations
     Public Class OnlineCourseService
         Implements IOnlineCourseService
 
-
         Public Function GetAllOnlineCourse() As IQueryable(Of OnlineCourse) Implements IOnlineCourseService.GetAllOnlineCourse
             Return DataContext.DBEntities.OnlineCourses
         End Function
 
         Public Sub CreateOnlineCourse(onlineCourse As OnlineCourse) Implements IOnlineCourseService.CreateOnlineCourse
-            If IfNotExist(onlineCourse.URL) Then
                 Try
                     DataContext.DBEntities.OnlineCourses.Add(onlineCourse)
                     DataContext.DBEntities.SaveChanges()
                 Catch ex As Exception
                     Console.WriteLine(ex)
                 End Try
-            End If
         End Sub
-
-        Public Function DeleteOnlineCourse(onlineCourse As String) As Object Implements IOnlineCourseService.DeleteOnlineCourse
-            Try
-                Dim course = (From c In DataContext.DBEntities.OnlineCourses Where c.CourseID = onlineCourse).FirstOrDefault
-                DataContext.DBEntities.OnlineCourses.Remove(course)
-                DataContext.DBEntities.SaveChanges()
-                Return course
-            Catch ex As Exception
-                Console.WriteLine(ex)
-            End Try
-        End Function
 
         Public Sub EditOnlineCourse(onlineCourse As OnlineCourse) Implements IOnlineCourseService.EditOnlineCourse
             Try
@@ -42,14 +28,15 @@ Namespace BusinessLogic.Services.Implementations
             End Try
         End Sub
 
-        Private Function IfNotExist(onlineCourse As String) As Boolean
-            Dim course = (From c In DataContext.DBEntities.OnlineCourses Where c.URL = onlineCourse).FirstOrDefault
-            If course Is Nothing Then
-                Return True
-            Else
-                Return False
-            End If
-        End Function
+        Public Sub DeleteOnlineCourse(onlineCourse As OnlineCourse) Implements IOnlineCourseService.DeleteOnlineCourse
+            Try
+                Dim course = (From c In DataContext.DBEntities.OnlineCourses Where c.CourseID = onlineCourse.CourseID).FirstOrDefault
+                DataContext.DBEntities.OnlineCourses.Remove(course)
+                DataContext.DBEntities.SaveChanges()
+            Catch ex As Exception
+                Console.WriteLine(ex)
+            End Try
+        End Sub
     End Class
 End Namespace
 
