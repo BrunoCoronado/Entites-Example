@@ -3,9 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="348" d:DesignWidth="569">
-    <Grid Name="MainGrid">
+             mc:Ignorable="d" Height="600" Width="900">
+    <Grid Name="MainDepartmentGrid" Background="White">
         <DataGrid HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top"
                   ItemsSource="{Binding Departments}" Height="284" Width="512"
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
@@ -17,5 +16,45 @@
                 <DataGridTextColumn x:Name="AdministratorColumn" Binding="{Binding Path=Administrator}" Header="Administrator" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
-    </Grid>
+
+        <Label Content="Name" HorizontalAlignment="Left" Margin="588,90,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Label Content="Budget" HorizontalAlignment="Left" Margin="588,123,0,0" VerticalAlignment="Top" Height="28" Width="119"/>
+        <Label Content="StartDate" HorizontalAlignment="Left" Margin="590,162,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Label Content="Administrator" HorizontalAlignment="Left" Margin="588,198,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Label Content="Department" HorizontalAlignment="Left" Margin="588,384,0,0" VerticalAlignment="Top" Height="25" Width="81" RenderTransformOrigin="0.506,-0.045"/>
+        <Label Content="Create" HorizontalAlignment="Left" Margin="672,30,0,0" VerticalAlignment="Top" Height="36" Width="75" FontSize="22"/>
+        <Label Content="Update" HorizontalAlignment="Left" Margin="672,315,0,0" VerticalAlignment="Top" Height="36" Width="90" FontSize="22"/>
+        <Label Content="Delete" HorizontalAlignment="Left" Margin="213,373,0,0" VerticalAlignment="Top" Height="36" Width="75" FontSize="22"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="588,414,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Label Content="Budget" HorizontalAlignment="Left" Margin="588,442,0,0" VerticalAlignment="Top" Height="28" Width="119"/>
+        <Label Content="StartDate" HorizontalAlignment="Left" Margin="588,476,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Label Content="Department" HorizontalAlignment="Left" Margin="80,444,0,0" VerticalAlignment="Top" Height="32" Width="82" RenderTransformOrigin="0.506,-0.045"/>
+        <Label Content="Administrator" HorizontalAlignment="Left" Margin="588,510,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Button Command="{Binding ButtonUpdateDepartment}" 
+            Content="UPDATE" HorizontalAlignment="Left" Margin="672,545,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Command="{Binding ButtonDeleteDepartment}" 
+                Content="DELETE" HorizontalAlignment="Left" Margin="310,444,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button  Command="{Binding ButtonCreateDepartment}" 
+                 Content="CREATE" HorizontalAlignment="Left" Margin="672,241,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox Text="{Binding EditDepartmentName, UpdateSourceTrigger=PropertyChanged}" 
+                 HorizontalAlignment="Left" Height="23" Margin="735,416,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding EditDepartmentBudget, UpdateSourceTrigger=PropertyChanged}" 
+                 HorizontalAlignment="Left" Height="23" Margin="735,444,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding CreateDepartmentAdministrator, UpdateSourceTrigger=PropertyChanged}" 
+                 HorizontalAlignment="Left" Height="23" Margin="735,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding EditDepartmentAdministrator, UpdateSourceTrigger=PropertyChanged}" 
+                 HorizontalAlignment="Left" Height="23" Margin="735,510,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding CreateDepartmentName, UpdateSourceTrigger=PropertyChanged}" 
+                 HorizontalAlignment="Left" Height="23" Margin="735,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding CreateDepartmentBudget, UpdateSourceTrigger=PropertyChanged}" 
+                 HorizontalAlignment="Left" Height="23" Margin="735,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DatePicker SelectedDate="{Binding EditDepartmentStartDate}" 
+                    HorizontalAlignment="Left" Margin="735,474,0,0" VerticalAlignment="Top" Height="30" Width="120"/>
+        <DatePicker SelectedDate="{Binding CreateDepartmentStartDate}" 
+                    HorizontalAlignment="Left" Margin="735,162,0,0" VerticalAlignment="Top" Height="30" Width="120"/>
+        <ComboBox HorizontalAlignment="Left" Margin="168,444,0,0" VerticalAlignment="Top" Width="120" 
+                  SelectedValue="{Binding DeleteDepartment}" ItemsSource="{Binding Departments}" DisplayMemberPath="Name" SelectedValuePath="DepartmentID"/>
+        <ComboBox HorizontalAlignment="Left" Margin="735,387,0,0" VerticalAlignment="Top" Width="120" 
+                  SelectedValue="{Binding UpdateDepartment}" ItemsSource="{Binding Departments}" DisplayMemberPath="Name" SelectedValuePath="DepartmentID"/>
+       </Grid>
 </UserControl>

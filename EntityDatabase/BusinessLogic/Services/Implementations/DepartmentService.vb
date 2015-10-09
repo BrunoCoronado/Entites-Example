@@ -19,25 +19,44 @@ Namespace BusinessLogic.Services.Implementations
 
         Public Sub EditDepartment(Department As Department) Implements IDepartmentService.EditDepartment
             Try
-                Dim newData = (From d In DataContext.DBEntities.Departments Where d.Name = Department.Name).FirstOrDefault
-                newData.Name = Department.Name
-                newData.Budget = Department.Budget
-                newData.StartDate = Department.StartDate
-                newData.Administrator = Department.Administrator
-                DataContext.DBEntities.SaveChanges()
+                Dim newData = (From d In DataContext.DBEntities.Departments Where d.DepartmentID = Department.DepartmentID).FirstOrDefault
+                If (newData.Courses).ToArray.Length = 0 Then
+                    newData.Name = Department.Name
+                    newData.Budget = Department.Budget
+                    newData.StartDate = Department.StartDate
+                    newData.Administrator = Department.Administrator
+                    DataContext.DBEntities.SaveChanges()
+                Else
+                    MsgBox("Imposible to Edit, Delete Courses First", MsgBoxStyle.OkOnly, "School")
+                End If
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
         End Sub
 
-        Public Sub DeleteDepartment(Department As Department) Implements IDepartmentService.DeleteDepartment
+        Public Sub DeleteDepartment(Department As String) Implements IDepartmentService.DeleteDepartment
             Try
-                DataContext.DBEntities.Departments.Remove(Department)
-                DataContext.DBEntities.SaveChanges()
+                Dim deletedDepartment = (From depart In DataContext.DBEntities.Departments Where depart.DepartmentID = Department).FirstOrDefault
+                If (deletedDepartment.Courses).ToArray.Length = 0 Then
+                    DataContext.DBEntities.Departments.Remove(deletedDepartment)
+                    DataContext.DBEntities.SaveChanges()
+                    MsgBox("Department Edited Correctly", MsgBoxStyle.OkOnly, "School")
+                Else
+                    MsgBox("Imposible to Delete, Delete Courses First", MsgBoxStyle.OkOnly, "School")
+                End If
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
         End Sub
+
+        Public Function FindDepartmentByID(department As Integer) As Object Implements IDepartmentService.FindDepartmentByID
+            Try
+                Dim departmetnFinder = (From d In DataContext.DBEntities.Departments Where d.DepartmentID = department).FirstOrDefault
+                Return departmetnFinder
+            Catch ex As Exception
+                Console.WriteLine(ex)
+            End Try
+        End Function
     End Class
 End Namespace
 

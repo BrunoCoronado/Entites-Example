@@ -10,14 +10,11 @@
     xmlns:onlineCoursesCRDU="clr-namespace:Modules.OnlineCourses.View"
     xmlns:OnsiteCourses="clr-namespace:Modules.OnsiteCoures.View"
     xmlns:Grades="clr-namespace:Modules.StudentGrades.View"
-    Title="MainWindow" Height="377" Width="600.01">
+    Title="MainWindow" Height="650" Width="900">
     <Grid>    
         <TabControl>
             <TabItem Header="Departments">
                 <departments:DepartmentsList x:Name="DepartmenstUserControl"/>
-            </TabItem>
-            <TabItem Header="DepartmentsCRUD">
-                <departmentsCRDU:DepartmentCRUDView x:Name="DepartmenstUserControlCRUD"/>
             </TabItem>
             <TabItem Header="Courses">
                 <courses:CoursesList x:Name="CoursesList"/>
