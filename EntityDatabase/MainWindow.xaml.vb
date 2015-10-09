@@ -14,7 +14,7 @@ Class MainWindow
 
         ' Add any initialization after the InitializeComponent() call.
         Me.DepartmenstUserControl.MainDepartmentGrid.DataContext = New DepartmentsViewModel
-        Me.CoursesList.MainGrid.DataContext = New CoursesViewModel
+        Me.CoursesList.MainCourseGrid.DataContext = New CoursesViewModel
         Me.PeopleList.MainGrid.DataContext = New PersonViewModel
         Me.OfficeAssigmentList.MainGrid.DataContext = New OfficeAssignmentsViewModel
         Me.OnlineCoursesList.MainGrid.DataContext = New OnlineCourseViewModel

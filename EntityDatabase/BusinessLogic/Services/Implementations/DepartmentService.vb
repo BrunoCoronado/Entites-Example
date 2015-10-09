@@ -26,6 +26,7 @@ Namespace BusinessLogic.Services.Implementations
                     newData.StartDate = Department.StartDate
                     newData.Administrator = Department.Administrator
                     DataContext.DBEntities.SaveChanges()
+                    MsgBox("Department Edited Correctly", MsgBoxStyle.OkOnly, "School")
                 Else
                     MsgBox("Imposible to Edit, Delete Courses First", MsgBoxStyle.OkOnly, "School")
                 End If
@@ -40,7 +41,7 @@ Namespace BusinessLogic.Services.Implementations
                 If (deletedDepartment.Courses).ToArray.Length = 0 Then
                     DataContext.DBEntities.Departments.Remove(deletedDepartment)
                     DataContext.DBEntities.SaveChanges()
-                    MsgBox("Department Edited Correctly", MsgBoxStyle.OkOnly, "School")
+                    MsgBox("Department Deleted Correctly", MsgBoxStyle.OkOnly, "School")
                 Else
                     MsgBox("Imposible to Delete, Delete Courses First", MsgBoxStyle.OkOnly, "School")
                 End If

@@ -3,10 +3,14 @@
 
         Function GetAllCourses() As IQueryable(Of Course)
 
-        Sub CreateCourse(couse As Course)
+        Sub CreateCourse(course As Course)
 
-        Sub DeleteCourse(couse As Course)
+        Sub DeleteCourse(course As String)
 
-        Sub EditCourse(couse As Course)
+        Sub EditCourse(course As Course)
+
+        Function FindCourseByID(course As Integer)
     End Interface
 End Namespace
+
+

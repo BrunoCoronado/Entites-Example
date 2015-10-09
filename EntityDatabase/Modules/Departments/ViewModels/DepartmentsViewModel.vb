@@ -216,9 +216,9 @@ Namespace Modules.Departments.ViewModels
                 Else
                     MsgBox("Fill all the spaces in blank", MsgBoxStyle.OkOnly, "School")
                 End If
-                Else
-                    MsgBox("Select a Department", MsgBoxStyle.OkOnly, "School")
-                End If
+            Else
+                MsgBox("Select a Department", MsgBoxStyle.OkOnly, "School")
+            End If
         End Sub
 
         Private Sub ChangeData(id As Integer)

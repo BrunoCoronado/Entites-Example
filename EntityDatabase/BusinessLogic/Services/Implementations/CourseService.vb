@@ -10,35 +10,55 @@ Namespace BusinessLogic.Services.Implementations
             Return DataContext.DBEntities.Courses
         End Function
 
-        Public Sub CreateCourse(couse As Course) Implements ICourseService.CreateCourse
+        Public Sub CreateCourse(course As Course) Implements ICourseService.CreateCourse
             Try
-                DataContext.DBEntities.Courses.Add(couse)
+                DataContext.DBEntities.Courses.Add(course)
                 DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 Console.WriteLine(ex)
-            End Try        
-        End Sub
+            End Try
 
-        Public Sub DeleteCourse(couse As Course) Implements ICourseService.DeleteCourse
+        End Sub
+        Public Sub DeleteCourse(course As String) Implements ICourseService.DeleteCourse
+            Dim deletedCourse As Course
             Try
-                Dim eliminar = (From c In DataContext.DBEntities.Courses Where c.CourseID = couse.CourseID).FirstOrDefault
-                DataContext.DBEntities.Courses.Remove(eliminar)
-                DataContext.DBEntities.SaveChanges()
+                deletedCourse = (From c In DataContext.DBEntities.Courses Where c.CourseID = course).FirstOrDefault
+                If deletedCourse.OnlineCourse Is Nothing And deletedCourse.OnsiteCourse Is Nothing And deletedCourse.StudentGrades.ToArray.Length = 0 And deletedCourse.People.ToArray.Length = 0 Then
+                    DataContext.DBEntities.Courses.Remove(deletedCourse)
+                    DataContext.DBEntities.SaveChanges()
+                    MsgBox("Course Deleted Correctly", MsgBoxStyle.OkOnly, "School")
+                Else
+                    MsgBox("Imposible to Delete, Course has many uses", MsgBoxStyle.OkOnly, "School")
+                End If
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
         End Sub
 
-        Public Sub EditCourse(couse As Course) Implements ICourseService.EditCourse
+        Public Sub EditCourse(course As Course) Implements ICourseService.EditCourse
             Try
-                Dim newData = (From c In DataContext.DBEntities.Courses Where c.CourseID = couse.CourseID).FirstOrDefault
-                newData.Title = couse.Title
-                newData.Credits = couse.Credits
-                newData.DepartmentID = couse.DepartmentID
-                DataContext.DBEntities.SaveChanges()
+                Dim newData = (From c In DataContext.DBEntities.Courses Where c.CourseID = course.CourseID).FirstOrDefault
+                If newData.OnlineCourse Is Nothing And newData.OnsiteCourse Is Nothing And newData.StudentGrades.ToArray.Length = 0 And newData.People.ToArray.Length = 0 Then
+                    newData.Title = course.Title
+                    newData.Credits = course.Credits
+                    newData.DepartmentID = course.DepartmentID
+                    DataContext.DBEntities.SaveChanges()
+                    MsgBox("Course Edited Correctly", MsgBoxStyle.OkOnly, "School")
+                Else
+                    MsgBox("Imposible to Delete, Course has many uses", MsgBoxStyle.OkOnly, "School")
+                End If
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
         End Sub
+
+        Public Function FindCourseByID(course As Integer) As Object Implements ICourseService.FindCourseByID
+            Try
+                Dim courseFinder = (From c In DataContext.DBEntities.Courses Where c.CourseID = course).FirstOrDefault
+                Return courseFinder
+            Catch ex As Exception
+                Console.WriteLine(ex)
+            End Try
+        End Function
     End Class
 End Namespace
