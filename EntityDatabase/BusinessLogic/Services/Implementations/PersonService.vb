@@ -20,10 +20,17 @@ Namespace BusinessLogic.Services.Implementations
             End Try
         End Sub
 
-        Public Sub DeletePerson(person As Person) Implements IPersonService.DeletePerson
+        Public Sub DeletePerson(person As String) Implements IPersonService.DeletePerson
+            Dim deletedPerson As Person
             Try
-                DataContext.DBEntities.People.Remove(person)
-                DataContext.DBEntities.SaveChanges()
+                deletedPerson = (From p In DataContext.DBEntities.People Where p.PersonID = person).FirstOrDefault
+                If deletedPerson.OfficeAssignment Is Nothing And deletedPerson.StudentGrades.ToArray.Length = 0 Then
+                    DataContext.DBEntities.People.Remove(deletedPerson)
+                    DataContext.DBEntities.SaveChanges()
+                    MsgBox("Person Deleted Correctly", MsgBoxStyle.OkOnly, "School")
+                Else
+                    MsgBox("Imposible to Delete, Peson has many uses", MsgBoxStyle.OkOnly, "School")
+                End If
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
@@ -37,10 +44,20 @@ Namespace BusinessLogic.Services.Implementations
                 per.HireDate = person.HireDate
                 per.EnrollmentDate = person.EnrollmentDate
                 DataContext.DBEntities.SaveChanges()
+                MsgBox("Person Edited Correctly", MsgBoxStyle.OkOnly, "School")
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
         End Sub
+
+        Public Function FindPersonByID(person As Integer) As Object Implements IPersonService.FindPersonByID
+            Try
+                Dim personFinder = (From p In DataContext.DBEntities.People Where p.PersonID = person).FirstOrDefault
+                Return personFinder
+            Catch ex As Exception
+                Console.WriteLine(ex)
+            End Try
+        End Function
     End Class
 End Namespace
 

@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="348" d:DesignWidth="569">
-    <Grid Name="MainGrid">
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid Name="MainGrid" Background="White">
         <DataGrid HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top"
                   ItemsSource="{Binding People}" Height="284" Width="512"
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
@@ -19,5 +19,45 @@
                 <DataGridTextColumn x:Name="StudentIdColumn" Binding="{Binding Path=StudentGrades.StudentID}" Header="StudentID" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <Label Content="Last Name" HorizontalAlignment="Left" Margin="588,90,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Label Content="First Name" HorizontalAlignment="Left" Margin="588,123,0,0" VerticalAlignment="Top" Height="28" Width="119"/>
+        <Label Content="EnrollmentDate" HorizontalAlignment="Left" Margin="590,162,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Label Content="HireDate" HorizontalAlignment="Left" Margin="588,198,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Label Content="Person" HorizontalAlignment="Left" Margin="588,384,0,0" VerticalAlignment="Top" Height="25" Width="81" RenderTransformOrigin="0.506,-0.045"/>
+        <Label Content="Create" HorizontalAlignment="Left" Margin="672,30,0,0" VerticalAlignment="Top" Height="36" Width="75" FontSize="22"/>
+        <Label Content="Update" HorizontalAlignment="Left" Margin="672,315,0,0" VerticalAlignment="Top" Height="36" Width="90" FontSize="22"/>
+        <Label Content="Delete" HorizontalAlignment="Left" Margin="213,373,0,0" VerticalAlignment="Top" Height="36" Width="75" FontSize="22"/>
+        <Label Content="Last Name" HorizontalAlignment="Left" Margin="588,414,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Label Content="First Name" HorizontalAlignment="Left" Margin="588,442,0,0" VerticalAlignment="Top" Height="28" Width="119"/>
+        <Label Content="EnrollmentDate" HorizontalAlignment="Left" Margin="588,476,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Label Content="Person" HorizontalAlignment="Left" Margin="80,444,0,0" VerticalAlignment="Top" Height="32" Width="82" RenderTransformOrigin="0.506,-0.045"/>
+        <Label Content="HireDate" HorizontalAlignment="Left" Margin="588,510,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Button Command="{Binding ButtonUpdatePerson}" 
+            Content="UPDATE" HorizontalAlignment="Left" Margin="672,556,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Command="{Binding ButtonDeletePerson}" 
+                Content="DELETE" HorizontalAlignment="Left" Margin="310,444,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button  Command="{Binding ButtonCreatePerson}" 
+                 Content="CREATE" HorizontalAlignment="Left" Margin="672,251,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox Text="{Binding UpdateLastName, UpdateSourceTrigger=PropertyChanged}" 
+                 HorizontalAlignment="Left" Height="23" Margin="735,416,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding UpdateFirstName, UpdateSourceTrigger=PropertyChanged}" 
+                 HorizontalAlignment="Left" Height="23" Margin="735,444,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding CreateLastName, UpdateSourceTrigger=PropertyChanged}" 
+                 HorizontalAlignment="Left" Height="23" Margin="735,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding CreateFirstName, UpdateSourceTrigger=PropertyChanged}" 
+                 HorizontalAlignment="Left" Height="23" Margin="735,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DatePicker SelectedDate="{Binding UpdateHireDate}" 
+                    HorizontalAlignment="Left" Margin="735,509,0,0" VerticalAlignment="Top" Height="30" Width="120"/>
+        <DatePicker SelectedDate="{Binding UpdateEnrollmentDate}" 
+                    HorizontalAlignment="Left" Margin="735,474,0,0" VerticalAlignment="Top" Height="30" Width="120"/>
+        <DatePicker SelectedDate="{Binding CreateHireDate}" 
+                    HorizontalAlignment="Left" Margin="735,162,0,0" VerticalAlignment="Top" Height="30" Width="120"/>
+        <DatePicker SelectedDate="{Binding CreateEnrollmentDate}" 
+                    HorizontalAlignment="Left" Margin="735,198,0,0" VerticalAlignment="Top" Height="30" Width="120"/>
+        <ComboBox HorizontalAlignment="Left" Margin="168,444,0,0" VerticalAlignment="Top" Width="120" 
+                  SelectedValue="{Binding DeletePerson}" ItemsSource="{Binding People}" DisplayMemberPath="LastName" SelectedValuePath="PersonID"/>
+        <ComboBox HorizontalAlignment="Left" Margin="735,387,0,0" VerticalAlignment="Top" Width="120" 
+                  SelectedValue="{Binding EditPerson}" ItemsSource="{Binding People}" DisplayMemberPath="LastName" SelectedValuePath="PersonID"/>
     </Grid>
 </UserControl>

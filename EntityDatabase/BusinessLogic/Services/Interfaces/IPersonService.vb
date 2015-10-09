@@ -5,10 +5,11 @@
 
         Sub CreatePerson(person As Person)
 
-        Sub DeletePerson(person As Person)
+        Sub DeletePerson(person As String)
 
         Sub EditPerson(person As Person)
 
+        Function FindPersonByID(person As Integer)
+
     End Interface
 End Namespace
-

@@ -20,16 +20,12 @@ Namespace BusinessLogic.Services.Implementations
         Public Sub EditDepartment(Department As Department) Implements IDepartmentService.EditDepartment
             Try
                 Dim newData = (From d In DataContext.DBEntities.Departments Where d.DepartmentID = Department.DepartmentID).FirstOrDefault
-                If (newData.Courses).ToArray.Length = 0 Then
                     newData.Name = Department.Name
                     newData.Budget = Department.Budget
                     newData.StartDate = Department.StartDate
                     newData.Administrator = Department.Administrator
                     DataContext.DBEntities.SaveChanges()
                     MsgBox("Department Edited Correctly", MsgBoxStyle.OkOnly, "School")
-                Else
-                    MsgBox("Imposible to Edit, Delete Courses First", MsgBoxStyle.OkOnly, "School")
-                End If
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try

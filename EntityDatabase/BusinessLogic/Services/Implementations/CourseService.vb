@@ -38,15 +38,11 @@ Namespace BusinessLogic.Services.Implementations
         Public Sub EditCourse(course As Course) Implements ICourseService.EditCourse
             Try
                 Dim newData = (From c In DataContext.DBEntities.Courses Where c.CourseID = course.CourseID).FirstOrDefault
-                If newData.OnlineCourse Is Nothing And newData.OnsiteCourse Is Nothing And newData.StudentGrades.ToArray.Length = 0 And newData.People.ToArray.Length = 0 Then
                     newData.Title = course.Title
                     newData.Credits = course.Credits
                     newData.DepartmentID = course.DepartmentID
                     DataContext.DBEntities.SaveChanges()
                     MsgBox("Course Edited Correctly", MsgBoxStyle.OkOnly, "School")
-                Else
-                    MsgBox("Imposible to Edited, Course has many uses", MsgBoxStyle.OkOnly, "School")
-                End If
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
