@@ -17,10 +17,12 @@ Namespace BusinessLogic.Services.Implementations
             End Try
         End Sub
 
-        Public Sub DeleteOfficeAssigment(officeAssigment As OfficeAssignment) Implements IOfficeAssignmentService.DeleteOfficeAssigment
+        Public Sub DeleteOfficeAssigment(officeAssigment As String) Implements IOfficeAssignmentService.DeleteOfficeAssigment
             Try
-                DataContext.DBEntities.OfficeAssignments.Remove(officeAssigment)
+                Dim office = (From o In DataContext.DBEntities.OfficeAssignments Where o.InstructorID = officeAssigment).FirstOrDefault
+                DataContext.DBEntities.OfficeAssignments.Remove(office)
                 DataContext.DBEntities.SaveChanges()
+                MsgBox("Office Assignment  Deleted Correctly", MsgBoxStyle.OkOnly, "School")
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
@@ -30,13 +32,21 @@ Namespace BusinessLogic.Services.Implementations
             Try
                 Dim newData = (From o In DataContext.DBEntities.OfficeAssignments Where o.InstructorID = officeAssigment.InstructorID).FirstOrDefault
                 newData.Location = officeAssigment.Location
-                newData.Person = officeAssigment.Person
-                newData.Timestamp = officeAssigment.Timestamp
                 DataContext.DBEntities.SaveChanges()
+                MsgBox("Office Assignment  Edited Correctly", MsgBoxStyle.OkOnly, "School")
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
         End Sub
+
+        Public Function FindOfficeByID(officeAssigment As Integer) As Object Implements IOfficeAssignmentService.FindOfficeByID
+            Try
+                Dim officeFinder = (From o In DataContext.DBEntities.OfficeAssignments Where o.InstructorID = officeAssigment).FirstOrDefault
+                Return officeFinder
+            Catch ex As Exception
+                Console.WriteLine(ex)
+            End Try
+        End Function
     End Class
 End Namespace
 
