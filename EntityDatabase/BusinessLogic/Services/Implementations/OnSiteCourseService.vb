@@ -18,11 +18,12 @@ Namespace BusinessLogic.Services.Implementations
             End Try
         End Sub
 
-        Public Sub DeleteOnsiteCourse(onsiteCourse As OnsiteCourse) Implements IOnSiteCourseService.DeleteOnsiteCourse
+        Public Sub DeleteOnsiteCourse(onsiteCourse As String) Implements IOnSiteCourseService.DeleteOnsiteCourse
             Try
-                Dim oCourse = (From oc In DataContext.DBEntities.OnsiteCourses Where oc.CourseID = onsiteCourse.CourseID).FirstOrDefault
+                Dim oCourse = (From oc In DataContext.DBEntities.OnsiteCourses Where oc.CourseID = onsiteCourse).FirstOrDefault
                 DataContext.DBEntities.OnsiteCourses.Remove(oCourse)
                 DataContext.DBEntities.SaveChanges()
+                MsgBox("Onsite Course Deleted Correctly", MsgBoxStyle.OkOnly, "School")
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
@@ -35,10 +36,20 @@ Namespace BusinessLogic.Services.Implementations
                 oCourse.Days = onsiteCourse.Days
                 oCourse.Time = onsiteCourse.Time
                 DataContext.DBEntities.SaveChanges()
+                MsgBox("Onsite Course Edited Correctly", MsgBoxStyle.OkOnly, "School")
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
         End Sub
+
+        Public Function FindOnsiteCourseByID(onsiteCourse As Integer) As Object Implements IOnSiteCourseService.FindOnsiteCourseByID
+            Try
+                Dim courseFinder = (From c In DataContext.DBEntities.OnsiteCourses Where c.CourseID = onsiteCourse).FirstOrDefault
+                Return courseFinder
+            Catch ex As Exception
+                Console.WriteLine(ex)
+            End Try
+        End Function
     End Class
 End Namespace
 

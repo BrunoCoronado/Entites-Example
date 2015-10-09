@@ -5,9 +5,12 @@
 
         Sub CreateOnsiteCourse(onsiteCourse As OnsiteCourse)
 
-        Sub DeleteOnsiteCourse(onsiteCourse As OnsiteCourse)
+        Sub DeleteOnsiteCourse(onsiteCourse As String)
 
         Sub EditOnsiteCourse(onsiteCourse As OnsiteCourse)
+
+        Function FindOnsiteCourseByID(onsiteCourse As Integer)
     End Interface
 End Namespace
+
 
