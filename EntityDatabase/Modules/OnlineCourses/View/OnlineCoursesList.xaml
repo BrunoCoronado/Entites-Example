@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-            d:DesignHeight="348" d:DesignWidth="569">
-    <Grid Name="MainGrid">
+            d:DesignHeight="600" d:DesignWidth="900">
+    <Grid Name="MainOnlineCourseGrid" Background="White">
         <DataGrid HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top"
                   ItemsSource="{Binding OnlineCourse}" Height="284" Width="512"
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
@@ -16,5 +16,30 @@
                 <DataGridTextColumn x:Name="DepartmentColumn" Binding="{Binding Path=Course.Department.Name}" Header="Department" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
-        </Grid>
+
+        <Label Content="Create" HorizontalAlignment="Left" Margin="672,30,0,0" VerticalAlignment="Top" Height="36" Width="75" FontSize="22"/>
+        <Label Content="Delete" HorizontalAlignment="Left" Margin="243,405,0,0" VerticalAlignment="Top" Height="36" Width="75" FontSize="22"/>
+        <Label Content="Update" HorizontalAlignment="Left" Margin="672,376,0,0" VerticalAlignment="Top" Height="36" Width="90" FontSize="22"/>
+        <Label Content="Course" HorizontalAlignment="Left" Margin="582,108,0,0" VerticalAlignment="Top" Height="23" Width="119"/>
+        <Label Content="URL" HorizontalAlignment="Left" Margin="582,136,0,0" VerticalAlignment="Top" Height="28" Width="119"/>
+        <Label Content="Url" HorizontalAlignment="Left" Margin="580,478,0,0" VerticalAlignment="Top" Height="24" Width="119"/>
+        <Label Content="Course" HorizontalAlignment="Left" Margin="126,472,0,0" VerticalAlignment="Top" Height="32" Width="82" RenderTransformOrigin="0.506,-0.045"/>
+        <Label Content="Course" HorizontalAlignment="Left" Margin="580,448,0,0" VerticalAlignment="Top" Height="26" Width="81" RenderTransformOrigin="0.506,-0.045"/>
+        <Button Command="{Binding ButtonUpdateCourse}"
+            Content="UPDATE" HorizontalAlignment="Left" Margin="672,514,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Command="{Binding ButtonDeleteCourse}"
+            Content="DELETE" HorizontalAlignment="Left" Margin="356,472,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button Command="{Binding ButtonCreateCourse}"
+            Content="CREATE" HorizontalAlignment="Left" Margin="672,171,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox  Text="{Binding CreateCourseURL, UpdateSourceTrigger=PropertyChanged}" 
+                  HorizontalAlignment="Left" Height="23" Margin="729,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox  Text="{Binding EditCourseURL, UpdateSourceTrigger=PropertyChanged}" 
+                  HorizontalAlignment="Left" Height="24" Margin="725,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ComboBox HorizontalAlignment="Left" Margin="214,472,0,0" VerticalAlignment="Top" Width="120" 
+                  SelectedValue="{Binding DeleteCourseID}" ItemsSource="{Binding AbleCourse}" DisplayMemberPath="Title" SelectedValuePath="CourseID"/>
+        <ComboBox HorizontalAlignment="Left" Margin="725,452,0,0" VerticalAlignment="Top" Width="120" 
+                  SelectedValue="{Binding EditCourseID}" ItemsSource="{Binding AbleCourse}" DisplayMemberPath="Title" SelectedValuePath="CourseID"/>
+        <ComboBox HorizontalAlignment="Left" Margin="729,105,0,0" VerticalAlignment="Top" Width="120" 
+                  SelectedValue="{Binding CreateCourseID}" ItemsSource="{Binding Course}" DisplayMemberPath="Title" SelectedValuePath="CourseID"/>
+     </Grid>
 </UserControl>

@@ -45,7 +45,7 @@ Namespace BusinessLogic.Services.Implementations
                     DataContext.DBEntities.SaveChanges()
                     MsgBox("Course Edited Correctly", MsgBoxStyle.OkOnly, "School")
                 Else
-                    MsgBox("Imposible to Delete, Course has many uses", MsgBoxStyle.OkOnly, "School")
+                    MsgBox("Imposible to Edited, Course has many uses", MsgBoxStyle.OkOnly, "School")
                 End If
             Catch ex As Exception
                 Console.WriteLine(ex)

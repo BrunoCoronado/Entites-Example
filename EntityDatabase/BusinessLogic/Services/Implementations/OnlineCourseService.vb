@@ -9,34 +9,44 @@ Namespace BusinessLogic.Services.Implementations
         End Function
 
         Public Sub CreateOnlineCourse(onlineCourse As OnlineCourse) Implements IOnlineCourseService.CreateOnlineCourse
-                Try
-                    DataContext.DBEntities.OnlineCourses.Add(onlineCourse)
-                    DataContext.DBEntities.SaveChanges()
-                Catch ex As Exception
-                    Console.WriteLine(ex)
-                End Try
+            Try
+                DataContext.DBEntities.OnlineCourses.Add(onlineCourse)
+                DataContext.DBEntities.SaveChanges()
+            Catch ex As Exception
+                Console.WriteLine(ex)
+            End Try
         End Sub
 
         Public Sub EditOnlineCourse(onlineCourse As OnlineCourse) Implements IOnlineCourseService.EditOnlineCourse
             Try
                 Dim newData = (From c In DataContext.DBEntities.OnlineCourses Where c.CourseID = onlineCourse.CourseID).FirstOrDefault
-                newData.CourseID = onlineCourse.CourseID
                 newData.URL = onlineCourse.URL
                 DataContext.DBEntities.SaveChanges()
+                MsgBox("Online Course Edited Correctly", MsgBoxStyle.OkOnly, "School")
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
         End Sub
 
-        Public Sub DeleteOnlineCourse(onlineCourse As OnlineCourse) Implements IOnlineCourseService.DeleteOnlineCourse
+        Public Sub DeleteOnlineCourse(onlineCourse As String) Implements IOnlineCourseService.DeleteOnlineCourse
             Try
-                Dim course = (From c In DataContext.DBEntities.OnlineCourses Where c.CourseID = onlineCourse.CourseID).FirstOrDefault
+                Dim course = (From c In DataContext.DBEntities.OnlineCourses Where c.CourseID = onlineCourse).FirstOrDefault
                 DataContext.DBEntities.OnlineCourses.Remove(course)
                 DataContext.DBEntities.SaveChanges()
+                MsgBox("Online Course Deleted Correctly", MsgBoxStyle.OkOnly, "School")
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
         End Sub
+
+        Public Function FindOnlineCourseByID(onlineCourse As Integer) As Object Implements IOnlineCourseService.FindOnlineCourseByID
+            Try
+                Dim courseFinder = (From c In DataContext.DBEntities.OnlineCourses Where c.CourseID = onlineCourse).FirstOrDefault
+                Return courseFinder
+            Catch ex As Exception
+                Console.WriteLine(ex)
+            End Try
+        End Function
     End Class
 End Namespace
 

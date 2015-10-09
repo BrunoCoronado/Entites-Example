@@ -7,8 +7,12 @@
 
         Sub EditOnlineCourse(onlineCourse As OnlineCourse)
 
-        Sub DeleteOnlineCourse(onlineCourse As OnlineCourse)
+        Sub DeleteOnlineCourse(onlineCourse As String)
 
+        Function FindOnlineCourseByID(onlineCourse As Integer)
     End Interface
 End Namespace
+
+
+
 

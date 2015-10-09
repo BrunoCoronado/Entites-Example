@@ -2,12 +2,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:departments="clr-namespace:Modules.Departments.Views"
-    xmlns:departmentsCRDU="clr-namespace:Modules.Departments.Views"
     xmlns:courses="clr-namespace:Modules.Courses.Views"
     xmlns:people="clr-namespace:Modules.People.Views"
     xmlns:OfficeAssgments="clr-namespace:Modules.OfficeAssignments.Views"
     xmlns:OnlineCourses="clr-namespace:Modules.OnlineCourses.View"
-    xmlns:onlineCoursesCRDU="clr-namespace:Modules.OnlineCourses.View"
     xmlns:OnsiteCourses="clr-namespace:Modules.OnsiteCoures.View"
     xmlns:Grades="clr-namespace:Modules.StudentGrades.View"
     Title="MainWindow" Height="650" Width="900">
@@ -27,9 +25,6 @@
             </TabItem>
             <TabItem Header="Online Courses">
                 <OnlineCourses:OnlineCoursesList x:Name="OnlineCoursesList"/>
-            </TabItem>
-            <TabItem Header="OnlineCoursesCRUD">
-                <onlineCoursesCRDU:OnlineCourseCRUDView x:Name="OnlineCourseUserControlCRUD"/>
             </TabItem>
             <TabItem Header="Onsite Courses">
                 <OnsiteCourses:OnsiteCoursesList x:Name="OnsiteCoursesList"/>

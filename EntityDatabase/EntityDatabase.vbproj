@@ -154,10 +154,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Modules\OnlineCourses\View\OnlineCourseCRUDView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Modules\OnlineCourses\View\OnlineCoursesList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -207,11 +203,7 @@
     <Compile Include="Modules\OfficeAssignments\View\OfficeAssignmentsList.xaml.vb">
       <DependentUpon>OfficeAssignmentsList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Modules\OnlineCourses\ViewModel\OnlineCourseCRUDViewModel.vb" />
     <Compile Include="Modules\OnlineCourses\ViewModel\OnlineCourseViewModel.vb" />
-    <Compile Include="Modules\OnlineCourses\View\OnlineCourseCRUDView.xaml.vb">
-      <DependentUpon>OnlineCourseCRUDView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Modules\OnlineCourses\View\OnlineCoursesList.xaml.vb">
       <DependentUpon>OnlineCoursesList.xaml</DependentUpon>
     </Compile>
